@@ -1,0 +1,27 @@
+{
+  "name": "dic-word-fetcher",
+  "version": "0.0.1",
+  "description": "Fetch words from dictionary and prepare them for leaning in Anki",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "Words",
+    "dictionary",
+    "Anki",
+    "learn",
+    "memorize"
+  ],
+  "author": "Andrei Akula",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^10.0.0",
+    "crocks": "^0.12.4",
+    "node-html-parser": "^6.1.5",
+    "ramda": "^0.29.0"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
