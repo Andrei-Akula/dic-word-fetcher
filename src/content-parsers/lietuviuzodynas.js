@@ -43,10 +43,11 @@ const selectContentText = node => {
   return contentNode.textContent.trim()
 }
 
-const ltRuTranslationRex = /(?<=Lietuvių—rusų kalbų žodynas)\s*\n([^A-Z]*)/gm // Lietuvių—rusų kalbų žodynas
+// const ltRuTranslationRex = /(?<=Lietuvių—rusų kalbų žodynas)\s*\n([^A-Z]*)/gm // Lietuvių—rusų kalbų žodynas
+const ltRuTranslationRex = /(?<=Lietuvių—rusų kalbų žodynas)\s*\n([\d),;\sа-я]*)/gm // Lietuvių—rusų kalbų žodynas
 const extractLtRuTranslation = matchAllTrimed(ltRuTranslationRex)
 
-const ruTranslationRex = /(?<=\d\))\s+([а-яё a-ząčęėįšųūž]+)\s*/gm // ru translations
+const ruTranslationRex = /(?<=\d\))\s+([;,а-яё a-ząčęėįšųūž]+)\s*/gm // ru translations
 const extractRuTranslation = matchAllTrimed(ruTranslationRex)
 
 const extractLtRuTranslationSplit = R.compose(R.flatten, R.map(extractRuTranslation), extractLtRuTranslation)
@@ -57,7 +58,7 @@ const extractExamples = matchAllTrimed(examplesRex)
 const examplesRemoveRex = /Dabartinės lietuvių kalbos žodynas\s*-\s[^\n]*/gm // Dabartinės lietuvių kalbos žodynas
 const removeExamples = replaceAll(examplesRemoveRex)
 
-const frasesRex = /(?<=Išraiškos\/posakiai)\s*([-),;\s\dа-яёa-ząčęėįšųūž]*)/gm
+const frasesRex = /(?<=Išraiškos\/posakiai)\s*([-),;?!\s\dа-яёa-ząčęėįšųūž]*)/gm
 const extractFrases = matchAllTrimed(frasesRex)
 
 const synonymsRex = /(?<=Sinonimų žodynas)\s*-(\s[^\n]*)/gm // Sinonimų žodynas
